@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
 
-    "name": "test",
-    "version": "1.0.1",
+    "name": "SW patch",
+    "version": "1.0.2",
 
     "icons": {
         "16": "img/16x16.png",
@@ -17,7 +17,7 @@
     ],
 
     "browser_action": {
-        "default_title": "test",
+        "default_title": "Patch for sonic-world.ru",
         "default_icon": "img/48x48.png",
         "default_popup": "html/popup.html"
     },
