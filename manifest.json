@@ -2,12 +2,16 @@
     "manifest_version": 2,
 
     "name": "SW patch",
-    "version": "1.0.2",
+    "version": "1.0.3",
 
     "icons": {
         "16": "img/16x16.png",
         "32": "img/32x32.png",
         "48": "img/48x48.png"
+    },
+
+    "background": {
+        "page": "html/background.html"
     },
 
     "permissions": [
@@ -26,7 +30,7 @@
         {
             "matches": ["https://*.sonic-world.ru/*", "http://*.sonic-world.ru/*"],
             "css": ["css/add.css"],
-            "js": ["js/contentscript.js"]
+            "js": ["js/jquery-1.11.1.min.js", "js/contentscript.js"]
         }
     ],
 
