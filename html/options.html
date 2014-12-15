@@ -1,15 +1,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Options</title>
+<title>Настройки</title>
 <link rel="stylesheet" href="../css/options.css" type="text/css" media="screen" />
-<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="../js/options.js"></script>
 </head>
 <body>
     <div id="message"></div>
     <div id="main">
-        Options
+        <h3>Настройки</h3>
+        <table>
+            <tr>
+                <td>
+                    <input type="checkbox" id="play_beep" class="beep">
+                    <label for="play_beep"> Разрешить звуковое уведомление чятика</label>
+                    <br />
+                    <br />
+
+                    <input type="checkbox" id="user_beep" class="beep" disabled>
+                    <label for="user_beep"> Использовать пользовательский сигнал (disabled)</label>
+                    <br />
+
+                    <input type="file" id="path_to_user_beep" class="beep" disabled><br />
+                    <label for="path_to_user_beep"> Путь к звуковому файлу (.wav) (disabled)</label>
+                    <br />
+                </td>
+            </tr>
+        </table>
+        <br />
+        <input type="button" class="save" value="Сохранить" /> <input type="button" class="close" value="Закрыть" /> <br />
     </div>
 </body>
 </html>
