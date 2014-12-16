@@ -101,7 +101,7 @@ function getSw(){
         success: function(data){ lolresponse(data); },
         error: function(){
             window.dlayamount = window.max_dlayamount;
-            setTimeout(get_sw, window.dlayamount + 500);
+            setTimeout(getSw, window.dlayamount + 500);
         }
     });
 }
