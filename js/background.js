@@ -6,7 +6,10 @@ window.config = {                // default config;
     look_for_chyatik: true,
     play_beep: true,
     //user_beep: false,
-    //path_to_user_beep: ''
+    //path_to_user_beep: '',
+    disable_commercial: true,
+    change_layout: true,
+    change_shadowbox: true
 };
 
 getConfig();
@@ -93,6 +96,8 @@ function lolresponse(response, status) {
     setTimeout(getSw, window.dlayamount + 500);
 }
 
+
+// External functions
 function updateIconClear() {
     window.number_beeps = 0;
     chrome.browserAction.setBadgeText({
@@ -100,6 +105,15 @@ function updateIconClear() {
     });
 }
 
+chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse){
+    if (msg == 'getOptions'){
+        response = window.config;
+    }
+    sendResponse(response);
+})
+
+
+//
 function getSw(){
     if (window.config.look_for_chyatik) {
         window.lol = new jQuery.ajax({

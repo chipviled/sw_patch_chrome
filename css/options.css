@@ -33,3 +33,7 @@ table {
 .sub {
     background-color: #EEEEFF;
 }
+
+.tab {
+    height: 26px;
+}

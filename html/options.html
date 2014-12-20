@@ -11,7 +11,7 @@
     <div id="main">
         <h2>Настройки</h2>
         <table>
-            <th colspan="2" class="sub">Чятик</th>
+            <tr><th colspan="2" class="sub">Чятик</th></tr>
             <tr>
                 <td>
                     <input type="checkbox" id="look_for_chyatik" class="beep">
@@ -21,7 +21,7 @@
                     <label for="look_for_chyatik"> Следить за Чятиком</label>
                 </td>
             </tr>
-            <th colspan="2"></th>
+            <tr><th colspan="2"></th></tr>
             <tr>
                 <td>
                     <input type="checkbox" id="play_beep" class="beep">
@@ -31,7 +31,7 @@
                     <label for="play_beep"> Разрешить звуковое уведомление чятика</label>
                 </td>
             </tr>
-            <th colspan="2"></th>
+            <tr><th colspan="2"></th></tr>
             <tr>
                 <td>
                     <input type="checkbox" id="user_beep" class="beep" disabled>
@@ -48,6 +48,39 @@
                         <i class="small">Пример ' <i>C:\path\to\file\beep.wav</i> ' без кавычек.</label></i><br />
                     <i class="small">Настройки безопасности не позволяют использовать данную функцию.</i>
                     <!-- It's never bee work. :( -->
+                </td>
+            </tr>
+
+            <tr><td colspan="2" class="tab"></td></tr>
+            <tr><th colspan="2" class="sub">Отображение портала</th></tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="change_layout" class="change">
+                    <br />
+                </td>
+                <td>
+                    <label for="change_layout"> Ограничить ширину протала</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="change_shadowbox" class="change">
+                    <br />
+                </td>
+                <td>
+                    <label for="change_shadowbox"> Исправить Shadowbox</label>
+                </td>
+            </tr>
+
+            <tr><td colspan="2" class="tab"></td></tr>
+            <tr><th colspan="2" class="sub">Реклама</th></tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="disable_commercial" class="commercial">
+                    <br />
+                </td>
+                <td>
+                    <label for="disable_commercial"> Скрыть рекламу</label>
                 </td>
             </tr>
         </table>

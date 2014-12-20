@@ -30,15 +30,21 @@ function saveText(id) {
 function loadOptions() {
     loadCheckbox("look_for_chyatik");
     loadCheckbox("play_beep");
-    loadCheckbox("user_beep");
-    loadText("path_to_user_beep");
+    //loadCheckbox("user_beep");
+    //loadText("path_to_user_beep");
+    loadCheckbox("disable_commercial");
+    loadCheckbox("change_layout");
+    loadCheckbox("change_shadowbox");
 }
 
 function saveOptions() {
     saveCheckbox("look_for_chyatik");
     saveCheckbox("play_beep");
-    saveCheckbox("user_beep");
-    saveText("path_to_user_beep");
+    //saveCheckbox("user_beep");
+    //saveText("path_to_user_beep");
+    saveCheckbox("disable_commercial");
+    saveCheckbox("change_layout");
+    saveCheckbox("change_shadowbox");
 
     backGround = chrome.extension.getBackgroundPage();
     backGround.getConfig();
