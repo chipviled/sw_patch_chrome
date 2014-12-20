@@ -9,22 +9,45 @@
 <body>
     <div id="message"></div>
     <div id="main">
-        <h3>Настройки</h3>
+        <h2>Настройки</h2>
         <table>
+            <th colspan="2" class="sub">Чятик</th>
+            <tr>
+                <td>
+                    <input type="checkbox" id="look_for_chyatik" class="beep">
+                    <br />
+                </td>
+                <td>
+                    <label for="look_for_chyatik"> Следить за Чятиком</label>
+                </td>
+            </tr>
+            <th colspan="2"></th>
             <tr>
                 <td>
                     <input type="checkbox" id="play_beep" class="beep">
+                    <br />
+                </td>
+                <td>
                     <label for="play_beep"> Разрешить звуковое уведомление чятика</label>
-                    <br />
-                    <br />
-
+                </td>
+            </tr>
+            <th colspan="2"></th>
+            <tr>
+                <td>
                     <input type="checkbox" id="user_beep" class="beep" disabled>
-                    <label for="user_beep"> Использовать пользовательский сигнал (disabled)</label>
                     <br />
-
-                    <input type="file" id="path_to_user_beep" class="beep" disabled><br />
-                    <label for="path_to_user_beep"> Путь к звуковому файлу (.wav) (disabled)</label>
-                    <br />
+                </td>
+                <td>
+                    <label class="disabled" for="user_beep"> Использовать пользовательский сигнал</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="text" id="path_to_user_beep" class="beep" style="width:100%;" disabled><br />
+                    <label  class="disabled" for="path_to_user_beep"> Полный путь к звуковому файлу (.wav).<br />
+                        <i class="small">Пример ' <i>C:\path\to\file\beep.wav</i> ' без кавычек.</label></i><br />
+                    <i class="small">Настройки безопасности не позволяют использовать данную функцию.</i>
+                    <!-- It's never bee work. :( -->
                 </td>
             </tr>
         </table>

@@ -2,10 +2,11 @@
 //
 //
 
-window.config = {       // default config;
+window.config = {                // default config;
+    look_for_chyatik: true,
     play_beep: true,
-    user_beep: false,
-    path_to_user_beep: ''
+    //user_beep: false,
+    //path_to_user_beep: ''
 };
 
 getConfig();
@@ -28,12 +29,14 @@ function setConfig() {
 }
 
 function beep(path) {
-    path = path || 0;
-    if (path == 0) {
-        var snd = new Audio('../wav/beep.wav');
-    } else {
-        var snd = new Audio(path);
-    }
+//     path = path || 0;
+//     if (path == 0) {
+//         var snd = new Audio('../wav/beep.wav');
+//     } else {
+//         // Don't work !!!
+//         var snd = new Audio('file://' + path);
+//     }
+    var snd = new Audio('../wav/beep.wav');
     snd.play();
 }
 
@@ -65,10 +68,14 @@ function lolresponse(response, status) {
             if (window.not_first) window.number_beeps += 1;
 
             if((window.config.play_beep) && (window.not_first)) {
+                //if (window.config.user_beep) {
+                //    beep(window.config.path_to_user_beep);
+                //} else {
+                //    beep();
+                //}
                 beep();
             }
 
-            //
             if (!window.not_first) window.not_first = true;
         }
     }
@@ -94,16 +101,20 @@ function updateIconClear() {
 }
 
 function getSw(){
-    window.lol = new jQuery.ajax({
-        url:'http://sonic-world.ru/modules/chatik/chatik.php?chan=main',
-        type: "POST",
-        data:{ ajax:1, lastid: window.lastid},
-        success: function(data){ lolresponse(data); },
-        error: function(){
-            window.dlayamount = window.max_dlayamount;
-            setTimeout(getSw, window.dlayamount + 500);
-        }
-    });
+    if (window.config.look_for_chyatik) {
+        window.lol = new jQuery.ajax({
+            url:'http://sonic-world.ru/modules/chatik/chatik.php?chan=main',
+            type: "POST",
+            data:{ ajax:1, lastid: window.lastid},
+            success: function(data){ lolresponse(data); },
+            error: function(){
+                window.dlayamount = window.max_dlayamount;
+                setTimeout(getSw, window.dlayamount + 500);
+            }
+        });
+    } else {
+        setTimeout(getSw, 30000);
+    }
 }
 
 getSw();
