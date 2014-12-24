@@ -1,5 +1,19 @@
 //
 
+function getUrlParameter(sUrl, sParam)
+{
+    var sPageURL = sUrl.split('?')[1];
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++)
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam)
+        {
+            return sParameterName[1];
+        }
+    }
+}
+
 // Load in begin.
 jQuery(document).ready(function() {
 
@@ -36,6 +50,29 @@ jQuery(document).ready(function() {
         jQuery(".slza").hide();
         jQuery("#swz1, #swz2").hide();
         jQuery("#sw_f div").first().hide();
+    }
+
+    if ( true && (/\/gallery\//.test(document.location.pathname)) ) {
+        console.log('deen!');
+        var $comment_text = jQuery('#comments')
+                .children('table')
+                .wrap('<div class="sw_gallery_comment"><div class="sw_gallery_comment_text"></div></div>');
+
+        var $comment_text = jQuery('.sw_gallery_comment');
+        $comment_text.prepend('<div class="sw_gallery_avatar"></div>');
+
+        var text = '';
+
+        $comment_text.each(function() {
+            text = jQuery(this).find('a').first().attr("href");
+            uid = getUrlParameter(text,'uid')
+
+            bg = '  url("../files/public/avatars/av'+ uid +'.jpg"), \
+                    url("../files/public/avatars/av'+ uid +'.png"), \
+                    url("../files/public/avatars/av'+ uid +'.gif")';
+            jQuery(this).find('.sw_gallery_avatar').css('background-image', bg);
+        });
+
     }
 
 });
