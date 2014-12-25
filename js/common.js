@@ -1,7 +1,7 @@
 //
 
-function getUrlParameter(sUrl, sParam)
-{
+// Get param from url.
+function getUrlParameter(sUrl, sParam) {
     var sPageURL = sUrl.split('?')[1];
     var sURLVariables = sPageURL.split('&');
     for (var i = 0; i < sURLVariables.length; i++)
@@ -13,6 +13,50 @@ function getUrlParameter(sUrl, sParam)
         }
     }
 }
+
+// Add avatar for gallery user.
+function getGalleryAvatarPict(uid) {
+    if (uid == undefined) return false;
+    jQuery.ajax({
+    url:'../files/public/avatars/av'+ uid +'.jpg',
+    type:'HEAD',
+    error:
+        function(){
+            jQuery.ajax({
+            url:'../files/public/avatars/av'+ uid +'.png',
+            type:'HEAD',
+            error:
+                function(){
+                    jQuery.ajax({
+                    url:'../files/public/avatars/av'+ uid +'.gif',
+                    type:'HEAD',
+                    error:
+                        function(){
+                            jQuery('.sw_gallery_avatar_'+ uid)
+                                .css('background-color', '#E0E0E0');
+                        },
+                    success:
+                        function(){
+                            jQuery('.sw_gallery_avatar_'+ uid)
+                                .css('background-image', 'url(../files/public/avatars/av'+ uid +'.gif)');
+                        }
+                    });
+                },
+            success:
+                function(){
+                    jQuery('.sw_gallery_avatar_'+ uid)
+                        .css('background-image', 'url(../files/public/avatars/av'+ uid +'.png)');
+                }
+            });
+        },
+    success:
+        function(){
+            jQuery('.sw_gallery_avatar_'+ uid)
+                .css('background-image', 'url(../files/public/avatars/av'+ uid +'.jpg)');
+        }
+    });
+}
+
 
 // Load in begin.
 jQuery(document).ready(function() {
@@ -52,27 +96,26 @@ jQuery(document).ready(function() {
         jQuery("#sw_f div").first().hide();
     }
 
-    if ( true && (/\/gallery\//.test(document.location.pathname)) ) {
-        console.log('deen!');
-        var $comment_text = jQuery('#comments')
-                .children('table')
-                .wrap('<div class="sw_gallery_comment"><div class="sw_gallery_comment_text"></div></div>');
+    if ( window.sw_config.gallery_avatars && (/\/gallery\/displayimage.php/.test(document.location.pathname)) ) {
+        jQuery('#comments').children('table').each(function() {
+                    var text = jQuery(this).find('a').first().attr("href");
+                    if (getUrlParameter(text,'uid') != undefined) {
+                        jQuery(this).wrap('<div class="sw_gallery_comment"><div class="sw_gallery_comment_text"></div></div>');
+                    }
+                });
 
-        var $comment_text = jQuery('.sw_gallery_comment');
-        $comment_text.prepend('<div class="sw_gallery_avatar"></div>');
+        jQuery('.sw_gallery_comment').each(function() {
+            var text = jQuery(this).find('a').first().attr("href");
+            var uid = getUrlParameter(text,'uid');
 
-        var text = '';
-
-        $comment_text.each(function() {
-            text = jQuery(this).find('a').first().attr("href");
-            uid = getUrlParameter(text,'uid')
-
-            bg = '  url("../files/public/avatars/av'+ uid +'.jpg"), \
-                    url("../files/public/avatars/av'+ uid +'.png"), \
-                    url("../files/public/avatars/av'+ uid +'.gif")';
-            jQuery(this).find('.sw_gallery_avatar').css('background-image', bg);
+            if (uid != undefined) {
+                var text_swga = '\
+                    <a href="../user.php?id.'+uid+'">\
+                        <div class="sw_gallery_avatar sw_gallery_avatar_'+uid+'"></div>\
+                    </a>';
+                jQuery(this).prepend(text_swga, getGalleryAvatarPict(uid));
+            }
         });
-
     }
 
 });

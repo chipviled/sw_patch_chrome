@@ -9,7 +9,8 @@ window.config = {                // default config;
     //path_to_user_beep: '',
     disable_commercial: true,
     change_layout: true,
-    change_shadowbox: true
+    change_shadowbox: true,
+    gallery_avatars: true
 };
 
 getConfig();

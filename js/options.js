@@ -35,6 +35,7 @@ function loadOptions() {
     loadCheckbox("disable_commercial");
     loadCheckbox("change_layout");
     loadCheckbox("change_shadowbox");
+    loadCheckbox("gallery_avatars");
 }
 
 function saveOptions() {
@@ -45,6 +46,7 @@ function saveOptions() {
     saveCheckbox("disable_commercial");
     saveCheckbox("change_layout");
     saveCheckbox("change_shadowbox");
+    saveCheckbox("gallery_avatars");
 
     backGround = chrome.extension.getBackgroundPage();
     backGround.getConfig();
