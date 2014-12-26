@@ -5,8 +5,6 @@
 window.config = {                // default config;
     look_for_chyatik: true,
     play_beep: true,
-    //user_beep: false,
-    //path_to_user_beep: '',
     disable_commercial: true,
     change_layout: true,
     change_shadowbox: true,
@@ -36,13 +34,6 @@ function setConfig() {
 }
 
 function beep(path) {
-//     path = path || 0;
-//     if (path == 0) {
-//         var snd = new Audio('../wav/beep.wav');
-//     } else {
-//         // Don't work !!!
-//         var snd = new Audio('file://' + path);
-//     }
     var snd = new Audio('../wav/beep.wav');
     snd.play();
 }
@@ -75,11 +66,6 @@ function lolresponse(response, status) {
             if (window.not_first) window.number_beeps += 1;
 
             if((window.config.play_beep) && (window.not_first)) {
-                //if (window.config.user_beep) {
-                //    beep(window.config.path_to_user_beep);
-                //} else {
-                //    beep();
-                //}
                 beep();
             }
 
