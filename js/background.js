@@ -10,7 +10,10 @@ window.config = {                // default config;
     disable_commercial: true,
     change_layout: true,
     change_shadowbox: true,
-    gallery_avatars: true
+    gallery_avatars: true,
+    gallery_ignor_smiles: false,
+    gallery_fix_cat_1: true,
+    gallery_filmstrip_hide_line: false
 };
 
 getConfig();

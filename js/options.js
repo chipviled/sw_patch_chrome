@@ -36,6 +36,9 @@ function loadOptions() {
     loadCheckbox("change_layout");
     loadCheckbox("change_shadowbox");
     loadCheckbox("gallery_avatars");
+    loadCheckbox("gallery_ignor_smiles");
+    loadCheckbox("gallery_fix_cat_1");
+    loadCheckbox("gallery_filmstrip_hide_line");
 }
 
 function saveOptions() {
@@ -47,6 +50,9 @@ function saveOptions() {
     saveCheckbox("change_layout");
     saveCheckbox("change_shadowbox");
     saveCheckbox("gallery_avatars");
+    saveCheckbox("gallery_ignor_smiles");
+    saveCheckbox("gallery_fix_cat_1");
+    saveCheckbox("gallery_filmstrip_hide_line");
 
     backGround = chrome.extension.getBackgroundPage();
     backGround.getConfig();

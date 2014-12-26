@@ -96,6 +96,43 @@ jQuery(document).ready(function() {
         jQuery("#sw_f div").first().hide();
     }
 
+    if ( window.sw_config.gallery_filmstrip_hide_line && (/\/gallery\/displayimage.php/.test(document.location.pathname)) ) {
+        jQuery('#filmstrip').children('table').children('tbody').children('tr:nth-child(2n-1)').hide();
+    }
+
+    if ( window.sw_config.gallery_fix_cat_1 && ( (/\/gallery\/$/.test(document.location.pathname)) || (/\/gallery\/index.php$/.test(document.location.pathname)) ) ) {
+        var tmp = '\
+<div class="image" style="display:inline-block;">\
+<img src="albums/userpics/12670/picthumb_onya.png" class="" width="93" height="100" border="0" alt="">\
+<img src="albums/userpics/27370/picthumb_img_1225.jpg" class="" width="68" height="100" border="0" alt="">\
+<img src="albums/userpics/10441/picthumb_irma_th.jpg" class="" width="92" height="100" border="0" alt="">\
+<img src="albums/userpics/10594/picthumb_linjkatejlza.jpg" class="" width="99" height="100" border="0" alt="">\
+</div><br />\
+';
+        jQuery('span.catlink').first().css('text-align','center').find('a[href="index.php?cat=1"]').prepend(tmp);
+    }
+
+    if ( window.sw_config.gallery_ignor_smiles && (/\/gallery\//.test(document.location.pathname)) ) {
+        jQuery("img[alt^='Laughing']").replaceWith(" <b>lol</b> ");
+        jQuery("img[alt^='Razz']").replaceWith(" <b>:-P</b> ");
+        jQuery("img[alt^='Very Happy']").replaceWith(" <b>:-D</b> ");
+        jQuery("img[alt^='Smile']").replaceWith(" <b>:-)</b> ");
+        jQuery("img[alt^='Neutral']").replaceWith(" <b>:-|</b> ");
+        jQuery("img[alt^='Sad']").replaceWith(" <b>:-(</b> ");
+        jQuery("img[alt^='Crying or Very sad']").replaceWith(" <b>:cry:</b> ");
+        jQuery("img[alt^='Cool']").replaceWith(" <b>8-)</b> ");
+        jQuery("img[alt^='Surprised']").replaceWith(" <b>:-o</b> ");
+        jQuery("img[alt^='Confused']").replaceWith(" <b>:-?</b> ");
+        jQuery("img[alt^='Embarrassed']").replaceWith(" <b>:oops:</b> ");
+        jQuery("img[alt^='Shocked']").replaceWith(" <b>:shock:</b> ");
+        jQuery("img[alt^='Mad']").replaceWith(" <b>:-x</b> ");
+        jQuery("img[alt^='Rolling Eyes']").replaceWith(" <b>:roll:</b> ");
+        jQuery("img[alt^='Wink']").replaceWith(" <b>;-)</b> ");
+        jQuery("img[alt^='Idea']").replaceWith(" <b>:idea:</b> ");
+        jQuery("img[alt^='Exclamation']").replaceWith(" <b>:!:</b> ");
+        jQuery("img[alt^='Question']").replaceWith(" <b>:?:</b> ");
+    }
+
     if ( window.sw_config.gallery_avatars && (/\/gallery\/displayimage.php/.test(document.location.pathname)) ) {
         jQuery('#comments').children('table').each(function() {
                     var text = jQuery(this).find('a').first().attr("href");
