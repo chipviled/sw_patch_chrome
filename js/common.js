@@ -2,6 +2,7 @@
 
 // Get param from url.
 function getUrlParameter(sUrl, sParam) {
+    if (sUrl == undefined) return 0;
     var sPageURL = sUrl.split('?')[1];
     var sURLVariables = sPageURL.split('&');
     for (var i = 0; i < sURLVariables.length; i++)
@@ -150,7 +151,11 @@ jQuery(document).ready(function() {
                     <a href="../user.php?id.'+uid+'">\
                         <div class="sw_gallery_avatar sw_gallery_avatar_'+uid+'"></div>\
                     </a>';
-                jQuery(this).prepend(text_swga, getGalleryAvatarPict(uid));
+                if (uid != 0) {
+                    jQuery(this).prepend(text_swga, getGalleryAvatarPict(uid));
+                } else {
+                    jQuery(this).prepend(text_swga);
+                }
             }
         });
     }
