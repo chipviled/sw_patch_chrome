@@ -37,3 +37,11 @@ table {
 .tab {
     height: 26px;
 }
+
+#title {
+    color: #6666AA;
+}
+
+.grey {
+    color: #999999;
+}

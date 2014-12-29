@@ -58,10 +58,18 @@ function saveOptions() {
     notification('Данные сохранены');
 }
 
+// Get version from manifest.
+var version = (function () {
+    var xm = new XMLHttpRequest();
+    xm.open('GET', chrome.extension.getURL('../manifest.json'), false);
+    xm.send(null);
+    return JSON.parse(xm.responseText).version;
+}() );
 
 //
 document.addEventListener('DOMContentLoaded', function () {
     loadOptions();
+    jQuery("#version").html('v' + version);
     jQuery(".save").click(saveOptions);
     jQuery(".close").click(closeOptions);
 });
