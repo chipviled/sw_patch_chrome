@@ -37,6 +37,7 @@ function loadOptions() {
     loadCheckbox("gallery_ignor_smiles");
     loadCheckbox("gallery_fix_cat_1");
     loadCheckbox("gallery_filmstrip_hide_line");
+    loadCheckbox("correct_url");
 }
 
 function saveOptions() {
@@ -49,6 +50,7 @@ function saveOptions() {
     saveCheckbox("gallery_ignor_smiles");
     saveCheckbox("gallery_fix_cat_1");
     saveCheckbox("gallery_filmstrip_hide_line");
+    saveCheckbox("correct_url");
 
     backGround = chrome.extension.getBackgroundPage();
     backGround.getConfig();

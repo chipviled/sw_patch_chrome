@@ -15,6 +15,20 @@ function getUrlParameter(sUrl, sParam) {
     }
 }
 
+// Get param from url [special e107].
+function getE107UrlParameter(sUrl, sParam) {
+    if (sUrl == undefined) return 0;
+    var sPageURL = sUrl.split('?')[1];
+    var sURLVariables = sPageURL.split('.');
+    for (var i = 0; i < sURLVariables.length; i++)
+    {
+        if (sURLVariables[i] == sParam)
+        {
+            return sURLVariables[i+1] || 0;
+        }
+    }
+}
+
 // Add avatar for gallery user.
 function getGalleryAvatarPict(uid) {
     if (uid == undefined) return false;
@@ -158,6 +172,25 @@ jQuery(document).ready(function() {
                 }
             }
         });
+    }
+
+    if (window.sw_config.correct_url) {
+        // Correct url for edit comments in user profile.
+        if ( /\/user.php/.test(document.location.pathname) ) {
+            var sw_user_id = getE107UrlParameter(document.location.href, 'id');
+            var sw_edit_id = 0;
+            jQuery('a[href*="/comment.php?.edit."').each(function() {
+                sw_edit_id = getE107UrlParameter(jQuery(this).attr('href'), 'edit');
+                jQuery(this).attr('href','/comment.php?comment.user.'+sw_user_id+'.edit.'+sw_edit_id);
+            });
+        }
+
+        // Correct url in bottom chatik (to mobile version).
+        if ( /\/modules\/chatik\/chatik\.php/.test(document.location.pathname) ) {
+            jQuery('a[href*="/modules/chatik/chatik.php??"').each(function() {
+                jQuery(this).attr('href', jQuery(this).attr('href').replace(/\?+/g, '?') );
+            });
+        }
     }
 
 });
