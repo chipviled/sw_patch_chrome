@@ -179,7 +179,7 @@ jQuery(document).ready(function() {
         if ( /\/user.php/.test(document.location.pathname) ) {
             var sw_user_id = getE107UrlParameter(document.location.href, 'id');
             var sw_edit_id = 0;
-            jQuery('a[href*="/comment.php?.edit."').each(function() {
+            jQuery('a[href*="/comment.php?.edit."]').each(function() {
                 sw_edit_id = getE107UrlParameter(jQuery(this).attr('href'), 'edit');
                 jQuery(this).attr('href','/comment.php?comment.user.'+sw_user_id+'.edit.'+sw_edit_id);
             });
@@ -187,7 +187,7 @@ jQuery(document).ready(function() {
 
         // Correct url in bottom chatik (to mobile version).
         if ( /\/modules\/chatik\/chatik\.php/.test(document.location.pathname) ) {
-            jQuery('a[href*="/modules/chatik/chatik.php??"').each(function() {
+            jQuery('a[href*="/modules/chatik/chatik.php??"]').each(function() {
                 jQuery(this).attr('href', jQuery(this).attr('href').replace(/\?+/g, '?') );
             });
         }
