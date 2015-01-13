@@ -72,9 +72,7 @@ function getGalleryAvatarPict(uid) {
     });
 }
 
-
-// Load in begin.
-jQuery(document).ready(function() {
+function swPatchRun() {
 
     if (window.sw_config.change_layout) {
         jQuery("body").addClass("body").addClass("wrap");
@@ -193,5 +191,21 @@ jQuery(document).ready(function() {
         }
     }
 
-});
+}
 
+//-----------------------------------
+
+jQuery(document).ready( function() {
+
+    // Run only if it's not admin directory
+    var path_r = document.location.pathname;
+    if ( !(/\/odminka\//.test(path_r)) &&
+         !(/\/e107_admin\//.test(path_r)) &&
+         !(/\/admin\//.test(path_r))
+    ){
+        swPatchRun();
+    } else {
+        console.log('SW_patch disabled for admin directory.');
+    }
+
+});
