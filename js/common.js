@@ -174,7 +174,7 @@ function swPatchRun() {
 
     if (window.sw_config.correct_url) {
         // Correct url for edit comments in user profile.
-        if ( /\/user.php/.test(document.location.pathname) ) {
+        if ( /\/user.php\?/.test(document.location.pathname) ) {
             var sw_user_id = getE107UrlParameter(document.location.href, 'id');
             var sw_edit_id = 0;
             jQuery('a[href*="/comment.php?.edit."]').each(function() {
@@ -189,6 +189,61 @@ function swPatchRun() {
                 jQuery(this).attr('href', jQuery(this).attr('href').replace(/\?+/g, '?') );
             });
         }
+    }
+
+    if ( (true) && (/\/\/sonic-world\.ru/.test(document.location.href)) &&
+            !(  // Without mobile version chatik.
+                ( /\/modules\/chatik\/chatik\.php/.test(document.location.href) )
+                && ( /mobile=1/.test(document.location.href) )
+            )
+        ) {
+        var menu_block = '';
+        var submenu_block = '';
+        var select = '';
+        var i = 1;
+        var other_select = '';
+
+        menu_block += '<div class="cv_mainmenu_container"><div class="cv_mainmenu_container_2">';
+        menu_block += '<div id="cv_mainmenu" class="cv_mainmenu cv_clrearfix"><ul>';
+        jQuery('#sw_c1:first .cwp span').each( function() {
+            select = ''
+            if (jQuery(this).css('font-weight') == 'bold') select = 'cv_mainmenu_select ';
+            if (i <= 8) {
+                menu_block += '<li class="topmenu ' + select + '">';
+                if (jQuery(this).find('a').text() == 'Группа ВКонтакте') {
+                    jQuery(this).find('a').text('Группа ВК');
+                }
+                menu_block += jQuery(this).html();
+                menu_block += '</li>';
+            } else {
+                submenu_block += '<li class="' + select + '">';
+                submenu_block += jQuery(this).html();
+                submenu_block += '</li>';
+                if (jQuery(this).css('font-weight') == 'bold') other_select = 'cv_mainmenu_select ';
+            }
+            i++;
+        });
+
+        menu_block += '<li class="topmenu submenu ' + other_select + '">';
+        menu_block += '<img src="/e107_images/icons/e7.png" alt=""> <a>Остальное</a>'
+        menu_block += '<ul>' + submenu_block + '</ul>';
+        menu_block += '</li>';
+
+        menu_block += '</ul></div>';
+        menu_block += '</div></div>';
+
+        jQuery('#toplogo').after(menu_block);
+        //jQuery('#sw_c1').find('.swblock').first().hide();
+
+
+        jQuery('.cv_mainmenu ul .submenu').on('click', function(){
+                var menu = jQuery(this).children('ul');
+                if (menu.hasClass('cv_submenu_open')) {
+                        menu.removeClass('cv_submenu_open');
+                } else {
+                        menu.addClass('cv_submenu_open');
+                }
+        });
     }
 
 }
