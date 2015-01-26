@@ -191,7 +191,7 @@ function swPatchRun() {
         }
     }
 
-    if ( (true) && (/\/\/sonic-world\.ru/.test(document.location.href)) &&
+    if ( (window.sw_config.alternative_menu) && (/\/\/sonic-world\.ru/.test(document.location.href)) &&
             !(  // Without mobile version chatik.
                 ( /\/modules\/chatik\/chatik\.php/.test(document.location.href) )
                 && ( /mobile=1/.test(document.location.href) )
@@ -225,7 +225,7 @@ function swPatchRun() {
         });
 
         menu_block += '<li class="topmenu submenu ' + other_select + '">';
-        menu_block += '<img src="/e107_images/icons/e7.png" alt=""> <a>Остальное</a>'
+        menu_block += '<img src="/e107_images/icons/e7.png" alt=""> <a href=#>Остальное</a>'
         menu_block += '<ul>' + submenu_block + '</ul>';
         menu_block += '</li>';
 
@@ -233,10 +233,11 @@ function swPatchRun() {
         menu_block += '</div></div>';
 
         jQuery('#toplogo').after(menu_block);
+
         //jQuery('#sw_c1').find('.swblock').first().hide();
 
-
-        jQuery('.cv_mainmenu ul .submenu').on('click', function(){
+        // Open/close submenu.
+        jQuery('.cv_mainmenu ul .submenu').on('click', function() {
                 var menu = jQuery(this).children('ul');
                 if (menu.hasClass('cv_submenu_open')) {
                         menu.removeClass('cv_submenu_open');
@@ -244,6 +245,17 @@ function swPatchRun() {
                         menu.addClass('cv_submenu_open');
                 }
         });
+
+        // Hide submenu if lost mouse.
+        jQuery('.cv_mainmenu ul .submenu').on('mouseleave', function() {
+            jQuery(this).children('ul').removeClass('cv_submenu_open');
+        });
+
+        // Disable href in links in li.submenu.
+        jQuery('.cv_mainmenu ul .submenu').children('a').click(function(e) {
+            e.preventDefault();
+        });
+
     }
 
 }

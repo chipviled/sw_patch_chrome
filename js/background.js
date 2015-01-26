@@ -12,7 +12,8 @@ window.config = {                // default config;
     gallery_ignor_smiles: false,
     gallery_fix_cat_1: true,
     gallery_filmstrip_hide_line: false,
-    correct_url: true
+    correct_url: true,
+    alternative_menu: false
 };
 
 getConfig();

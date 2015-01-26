@@ -38,6 +38,7 @@ function loadOptions() {
     loadCheckbox("gallery_fix_cat_1");
     loadCheckbox("gallery_filmstrip_hide_line");
     loadCheckbox("correct_url");
+    loadCheckbox("alternative_menu");
 }
 
 function saveOptions() {
@@ -51,6 +52,7 @@ function saveOptions() {
     saveCheckbox("gallery_fix_cat_1");
     saveCheckbox("gallery_filmstrip_hide_line");
     saveCheckbox("correct_url");
+    saveCheckbox("alternative_menu");
 
     backGround = chrome.extension.getBackgroundPage();
     backGround.getConfig();

@@ -133,13 +133,13 @@
     border-radius:  15px 15px 0 0;
     border-top-left-radius: 10px 30px;
     border-top-right-radius: 10px 30px;
-    background-color: #EEE;
+    background-color: #EEEEEE;
     background-color: rgba(241,241,241,0.94);
     font-weight: bold;
 }
 
 .cv_mainmenu ul li.topmenu:hover {
-    background-color: #FFF;
+    background-color: #FFFFFF;
     /*z-index:102;*/
 }
 
@@ -151,12 +151,12 @@
 }
 
 .cv_mainmenu ul li.topmenu.cv_mainmenu_select:hover {
-    background: linear-gradient(to bottom, #FFFFFF 90%,#eeeeee 100%);
+    background: linear-gradient(to bottom, #FFFFFF 90%,#EEEEEE 100%);
 }
 
 .cv_mainmenu li.divider {
     padding: 0;
-    border-top: 1px solid #EEE;
+    border-top: 1px solid #EEEEEE;
     margin: 5px auto 5px;
     cursor: default;
 }
@@ -195,7 +195,7 @@
     border-radius: 0;
     border: 0px solid #333333;
     border-bottom: 1px solid #AAAAAA;
-    background-color: #EEE;
+    background-color: #EEEEEE;
     padding: 0 6px;
 }
 
@@ -206,7 +206,7 @@
 }
 
 .cv_mainmenu ul li.topmenu ul li:hover {
-    background-color: #FFF;
+    background-color: #FFFFFF;
 }
 
 .cv_mainmenu ul li.topmenu ul.cv_submenu_open {
