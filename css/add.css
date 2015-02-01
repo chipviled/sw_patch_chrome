@@ -166,7 +166,7 @@
 }
 
 .cv_mainmenu li img {
-    margin-right: 3px;
+    padding-right: 3px;
 }
 
 .cv_mainmenu ul li.topmenu ul {
@@ -216,10 +216,6 @@
 .cv_mainmenu ul li.topmenu ul li a {
     padding: 7px 2px;
     display: inline-block;
-}
-
-.cv_mainmenu ul li.topmenu ul li img {
-    margin: 0;
 }
 
 .cv_mainmenu ul li.topmenu ul li.cv_mainmenu_select {

@@ -208,11 +208,17 @@ function swPatchRun() {
         jQuery('#sw_c1:first .cwp span').each( function() {
             select = ''
             if (jQuery(this).css('font-weight') == 'bold') select = 'cv_mainmenu_select ';
+
+            // Correct VK link
+            if (jQuery(this).find('a').text() == 'Группа ВКонтакте') {
+                jQuery(this).find('a').text('Группа ВК');
+            }
+
+            // Move img.
+            jQuery(this).find('a').prepend(jQuery(this).find('img'));
+
             if (i <= 8) {
                 menu_block += '<li class="topmenu ' + select + '">';
-                if (jQuery(this).find('a').text() == 'Группа ВКонтакте') {
-                    jQuery(this).find('a').text('Группа ВК');
-                }
                 menu_block += jQuery(this).html();
                 menu_block += '</li>';
             } else {
@@ -222,6 +228,7 @@ function swPatchRun() {
                 if (jQuery(this).css('font-weight') == 'bold') other_select = 'cv_mainmenu_select ';
             }
             i++;
+
         });
 
         menu_block += '<li class="topmenu submenu ' + other_select + '">';
