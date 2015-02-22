@@ -174,7 +174,7 @@ function swPatchRun() {
 
     if (window.sw_config.correct_url) {
         // Correct url for edit comments in user profile.
-        if ( /\/user.php\?/.test(document.location.pathname) ) {
+        if ( /\/user\.php\?/.test(document.location.href) ) {
             var sw_user_id = getE107UrlParameter(document.location.href, 'id');
             var sw_edit_id = 0;
             jQuery('a[href*="/comment.php?.edit."]').each(function() {
@@ -205,7 +205,7 @@ function swPatchRun() {
 
         menu_block += '<div class="cv_mainmenu_container"><div class="cv_mainmenu_container_2">';
         menu_block += '<div id="cv_mainmenu" class="cv_mainmenu cv_clrearfix"><ul>';
-        jQuery('#sw_c1:first .cwp span').each( function() {
+        jQuery('#sw_c1 .cwp:first span').each( function() {
             select = ''
             if (jQuery(this).css('font-weight') == 'bold') select = 'cv_mainmenu_select ';
 
