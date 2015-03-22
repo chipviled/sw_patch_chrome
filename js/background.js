@@ -13,7 +13,8 @@ window.config = {                // default config;
     gallery_fix_cat_1: true,
     gallery_filmstrip_hide_line: false,
     correct_url: true,
-    alternative_menu: false
+    alternative_menu: false,
+    forum_right_to_left: false
 };
 
 getConfig();

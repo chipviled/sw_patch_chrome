@@ -39,6 +39,7 @@ function loadOptions() {
     loadCheckbox("gallery_filmstrip_hide_line");
     loadCheckbox("correct_url");
     loadCheckbox("alternative_menu");
+    loadCheckbox("forum_right_to_left");
 }
 
 function saveOptions() {
@@ -53,6 +54,7 @@ function saveOptions() {
     saveCheckbox("gallery_filmstrip_hide_line");
     saveCheckbox("correct_url");
     saveCheckbox("alternative_menu");
+    saveCheckbox("forum_right_to_left");
 
     backGround = chrome.extension.getBackgroundPage();
     backGround.getConfig();
