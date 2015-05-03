@@ -40,6 +40,7 @@ function loadOptions() {
     loadCheckbox("correct_url");
     loadCheckbox("alternative_menu");
     loadCheckbox("forum_right_to_left");
+    loadCheckbox("enable_photoswipe");
 }
 
 function saveOptions() {
@@ -55,6 +56,7 @@ function saveOptions() {
     saveCheckbox("correct_url");
     saveCheckbox("alternative_menu");
     saveCheckbox("forum_right_to_left");
+    saveCheckbox("enable_photoswipe");
 
     backGround = chrome.extension.getBackgroundPage();
     backGround.getConfig();

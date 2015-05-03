@@ -2,7 +2,7 @@
     "manifest_version": 2,
 
     "name": "SW patch",
-    "version": "1.0.14",
+    "version": "1.0.15",
 
     "icons": {
         "16": "img/16x16.png",
@@ -29,7 +29,7 @@
     "content_scripts": [
         {
             "matches": ["https://*.sonic-world.ru/*", "http://*.sonic-world.ru/*"],
-            "css": ["css/add.css"],
+            "css": ["css/add.css", "css/photoswipe.css"],
             "js": ["js/jquery-1.11.1.min.js", "js/contentscript.js"]
         }
     ],
@@ -39,6 +39,8 @@
     "web_accessible_resources": [
         "js/jquery-1.11.1.min.js",
         "js/common.js",
-        "css/add.css"
+        "js/photoswipe-init.js",
+        "css/add.css",
+        "css/photoswipe.css"
     ]
 }

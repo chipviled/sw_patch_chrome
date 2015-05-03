@@ -14,7 +14,8 @@ window.config = {                // default config;
     gallery_filmstrip_hide_line: false,
     correct_url: true,
     alternative_menu: false,
-    forum_right_to_left: false
+    forum_right_to_left: false,
+    enable_photoswipe: false
 };
 
 getConfig();
