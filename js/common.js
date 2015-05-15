@@ -287,7 +287,10 @@ function swPatchRun() {
 
 
     // Forum. Moving right colum to left.
-    if ( (window.sw_config.forum_right_to_left) && (/\/\/forum.sonic-world\.ru/.test(document.location.href)) ) {
+    if ( (window.sw_config.forum_right_to_left) &&
+            ( (/\/\/sonic-world\.ru\/forum/.test(document.location.href)                // New path to forum.
+                || (/\/\/forum.sonic-world\.ru/.test(document.location.href))) )        // Old path to forum.
+    ) {
         jQuery('#board_index').removeClass('ipsLayout_withright').addClass('ipsLayout_withleft');
         jQuery('#board_index').removeClass('ipsLayout_largeright').addClass('ipsLayout_largeleft');
         jQuery('#index_stats').removeClass('ipsLayout_right').addClass('ipsLayout_left');
