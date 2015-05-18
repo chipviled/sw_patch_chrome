@@ -115,6 +115,7 @@ function swPatchRun() {
         jQuery("#swz1, #swz2").hide();
         jQuery("#sw_f div").first().hide();
         jQuery("#board_statistics").next().hide();
+        jQuery("table.c410d1").hide();                  // New testing commercial banner.
     }
 
 
