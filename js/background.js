@@ -15,7 +15,8 @@ window.config = {                // default config;
     correct_url: true,
     alternative_menu: false,
     forum_right_to_left: false,
-    enable_photoswipe: false
+    enable_photoswipe: false,
+    forum_reputation_ignore: false
 };
 
 getConfig();

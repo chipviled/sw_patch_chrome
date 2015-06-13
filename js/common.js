@@ -120,6 +120,13 @@ function swPatchRun() {
     }
 
 
+    // Hide forum reputation.
+    if (sw_config.forum_reputation_ignore) {
+        jQuery(".reputation, .rep_bar").hide();
+        jQuery('[data-tabid="reputation"]').hide();
+    }
+
+
     // Hide filmstripper black lines.
     if ( window.sw_config.gallery_filmstrip_hide_line && (/\/gallery\/displayimage.php/.test(document.location.pathname)) ) {
         jQuery('#filmstrip').children('table').children('tbody').children('tr:nth-child(2n-1)').hide();
