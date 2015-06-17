@@ -5,7 +5,7 @@
 window.config = {                // default config;
     look_for_chyatik: true,
     play_beep: true,
-    disable_commercial: true,
+    disable_commercial: false,
     change_layout: true,
     change_shadowbox: true,
     gallery_avatars: true,

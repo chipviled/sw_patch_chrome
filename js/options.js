@@ -1,4 +1,7 @@
 //
+var version = "1.0.17.4";
+var commercial_warning = "Включая эту опцию вы поступаете вообще-то не очень хорошо.";
+
 
 function notification(msg) {
     jQuery('#message').html(msg).stop().fadeIn("slow").delay(3000).fadeOut("slow");
@@ -66,19 +69,26 @@ function saveOptions() {
     notification('Данные сохранены');
 }
 
-// Get version from manifest.
-var version = (function () {
-    var xm = new XMLHttpRequest();
-    xm.open('GET', chrome.extension.getURL('../manifest.json'), false);
-    xm.send(null);
-    return JSON.parse(xm.responseText).version;
-}() );
+// Show commercial warning
+function commercialWarning(disable_commercial) {
+    if (disable_commercial == true) jQuery("#disable_commercial_warning").text(commercial_warning).show();
+
+    jQuery("#disable_commercial").change(function() {
+        if (jQuery(this).prop('checked')) {
+            jQuery("#disable_commercial_warning").text(commercial_warning).stop().fadeIn();
+        } else {
+            jQuery("#disable_commercial_warning").stop().fadeOut();
+        }
+    });
+}
 
 //
 document.addEventListener('DOMContentLoaded', function () {
     loadOptions();
-    jQuery("#version").html('v' + version);
+    jQuery("#version").html('v ' + version);
     jQuery(".save").click(saveOptions);
     jQuery(".close").click(closeOptions);
+    var conf = (localStorage["disable_commercial"] == "true");
+    commercialWarning(conf);
 });
 

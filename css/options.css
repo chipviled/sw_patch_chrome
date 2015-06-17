@@ -31,7 +31,7 @@ table {
 }
 
 .small {
-    font-size: 0.6em;
+    font-size: 0.7em;
 }
 
 .sub {
@@ -39,7 +39,7 @@ table {
 }
 
 .tab {
-    height: 26px;
+    height: 1.2em;
 }
 
 #title {
@@ -52,4 +52,13 @@ table {
 
 .label_relaive{
     position: relative;
+}
+
+.commercial_warning{
+    display: none;
+    font-size: 0.7em;
+    font-style: italic;
+    line-height: 1;
+    color: #a94442;
+    vertical-align: baseline;
 }
