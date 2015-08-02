@@ -121,9 +121,16 @@ function swPatchRun() {
 
 
     // Hide forum reputation.
-    if (sw_config.forum_reputation_ignore) {
+    if ( sw_config.forum_reputation_ignore && (/\/\/sonic-world\.ru\/forum/.test(document.location.href))  ) {
         jQuery(".reputation, .rep_bar").hide();
         jQuery('[data-tabid="reputation"]').hide();
+    }
+
+
+    // Hide forum avards.
+    if ( sw_config.forum_avards_ignore && (/\/\/sonic-world\.ru\/forum/.test(document.location.href))  ) {
+        jQuery(".author_info").find('fieldset').hide();
+        jQuery('[data-tabid="awards"]').hide();
     }
 
 
