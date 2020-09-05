@@ -1,11 +1,16 @@
 body {
     position: relative;
+    font-size: 1.0em;
+    font-family: arial,helvetica,sans-serif;
+    background-color: #FFFFFF;
 }
 
 #main {
     text-align: center;
-    padding-top: 30px;
+    /*padding-top: 30px;*/
     position: relative;
+    font-size: 1.0em;
+    line-height: 0.8;
 }
 
 table {
@@ -19,11 +24,12 @@ table {
     background-color: #009900;
     color: #FFFFFF;
     display: inline;
-    padding: 10px 0;
+    padding: 16px 0;
     display: none;
     z-index: 101;
     top: 0;
     left: 0;
+    font-size: 1.2em;
 }
 
 .disabled {
@@ -60,5 +66,18 @@ table {
     font-style: italic;
     line-height: 1;
     color: #a94442;
+    vertical-align: baseline;
+}
+
+.custom_style_text{
+    width: 100%;
+    height: 140px;
+    white-space: pre;
+}
+
+.noty {
+    font-size: 0.7em;
+    line-height: 1;
+    color: #999999;
     vertical-align: baseline;
 }

@@ -1,5 +1,6 @@
 //
-var version = "1.0.18";
+var version = "1.1.0_dev";
+var sw_config = {};
 var commercial_warning = "Включая эту опцию вы поступаете вообще-то не очень хорошо.";
 
 
@@ -7,25 +8,25 @@ function notification(msg) {
     jQuery('#message').html(msg).stop().fadeIn("slow").delay(3000).fadeOut("slow");
 }
 
-function closeOptions() {
-    window.open('', '_self', '');window.close();
-}
-
+// function closeOptions() {
+//     //self.port.emit("options_hide", null);
+//     open(location, '_self').close();
+// }
 
 function loadCheckbox(id) {
-    document.getElementById(id).checked = typeof localStorage[id] == "undefined" ? false : localStorage[id] == "true";
+    document.getElementById(id).checked = typeof window.sw_config[id] === null ? false : window.sw_config[id] == true;
 }
 
 function saveCheckbox(id) {
-    localStorage[id] = document.getElementById(id).checked;
+    window.sw_config[id] = document.getElementById(id).checked;
 }
 
 function loadText(id) {
-    document.getElementById(id).value = localStorage[id];
+    document.getElementById(id).value = typeof localStorage[id] === 'undefined' ? window.sw_config[id] : localStorage[id];
 }
 
 function saveText(id) {
-    localStorage[id] = document.getElementById(id).value;
+    window.sw_config[id] = document.getElementById(id).value;
 }
 
 
@@ -46,6 +47,11 @@ function loadOptions() {
     loadCheckbox("enable_photoswipe");
     loadCheckbox("forum_reputation_ignore");
     loadCheckbox("forum_avards_ignore");
+    loadCheckbox("forum_filter_status");
+    loadCheckbox("forum_multiquote_in_closed_themes");
+
+    loadCheckbox("custom_style");
+    loadText("custom_style_text");
 }
 
 function saveOptions() {
@@ -64,11 +70,20 @@ function saveOptions() {
     saveCheckbox("enable_photoswipe");
     saveCheckbox("forum_reputation_ignore");
     saveCheckbox("forum_avards_ignore");
+    saveCheckbox("forum_filter_status");
+    saveCheckbox("forum_multiquote_in_closed_themes");
 
-    backGround = chrome.extension.getBackgroundPage();
-    backGround.getConfig();
+    saveCheckbox("custom_style");
+    saveText("custom_style_text");
 
-    notification('Данные сохранены');
+    //self.port.emit("set_sw_config", sw_config);
+    let sending = browser.runtime.sendMessage({
+        name: 'setOptions',
+        data: sw_config
+    });
+    sending.then(function(response){
+        notification('Данные сохранены');
+    });
 }
 
 // Show commercial warning
@@ -84,13 +99,17 @@ function commercialWarning(disable_commercial) {
     });
 }
 
-//
-document.addEventListener('DOMContentLoaded', function () {
+
+// Get config
+browser.runtime.sendMessage({name: 'getOptions'}, function(response){
+    sw_config = response;
     loadOptions();
-    jQuery("#version").html('v ' + version);
-    jQuery(".save").click(saveOptions);
-    jQuery(".close").click(closeOptions);
-    var conf = (localStorage["disable_commercial"] == "true");
-    commercialWarning(conf);
+    commercialWarning(sw_config["disable_commercial"]);
 });
 
+
+document.addEventListener('DOMContentLoaded', function () {
+    jQuery("#version").html('v ' + version);
+    jQuery(".save").click(saveOptions);
+    //jQuery(".close").click(closeOptions);
+});
